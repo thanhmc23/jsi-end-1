@@ -1,30 +1,27 @@
-const provider = new GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
+document.getElementById('signOutButton').addEventListener('click', () => {
+    firebase.auth().signOut()
+        .then(() => {
+            console.log('Người dùng đã đăng xuất');
+        })
+        .catch((error) => {
+            console.error('Lỗi đăng xuất:', error);
+        });
+});
 
-function signInWithGoogle() {
-  signInWithPopup(auth, provider)
+document.getElementById("googleSignIn").addEventListener("click", () => {
+  firebase
+    .auth()
+    .signInWithPopup(provider)
     .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      console.log("User signed in successfully.");
       const user = result.user;
-      console.log("User signed in:", user);
-      alert("Sign in success");
+      console.log(user);
+      // ...
     })
     .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      console.error("Sign-in error:", errorCode, errorMessage);
-      alert("Sign in fail");
+      // Handle errors.
+      console.error(error);
       // ...
     });
-}
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    console.log("User is signed in (state change):", user);
-  } else {
-    console.log("User is signed out (state change)");
-  }
 });
