@@ -5,4 +5,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border-radius:10px ;
+  border: 1px lightgrey solid;
+  padding: 30px;
+}
+.center{
+    margin-left:200px ;
 }

@@ -15,7 +15,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,20 +43,17 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0" >
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">iLanding</h1>
+        <img src="assets/img/main-logo.png" alt="" width="150px">
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="#about">Tìm kiếm</a></li>
+          <li class="dropdown"><a href="#"><span>Ngành hàng</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -71,12 +70,17 @@
               <li><a href="#">Dropdown 4</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+          <li><a href="#pricing">Hội viên</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+      <a class="btn-getstarted" href="login.html" id="sign-in">Đăng nhập</a>
+      <!-- <p class="btn-getstarted" href="" id="user_display">Đăng nhập</p> -->
+      <a href="testingpage.html"><button type="button" class="btn btn-outline-dark" id="user_display">Dark</button></a>
+
+
 
     </div>
   </header>
@@ -107,6 +111,8 @@
 
       <div class="container" data-aos="fade-up">
         <p>Use this page as a starter for your own custom pages.</p>
+        <button type="button" id="signOutButton" class="btn btn-outline-primary">Đăng xuất</button>
+
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -196,7 +202,8 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -208,7 +215,18 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-  
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Auth -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js" integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Main JS File -->
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/user-edit.js"></script>
+  <script src="assets/js/sign-out-button.js"></script>
 
 </body>
 

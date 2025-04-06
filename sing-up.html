@@ -39,30 +39,37 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script> -->
 </head>
 
 <body class="index-page">
   <div class="sign-in-box">
-    <form>
-      <h4>Đăng nhập</h4>
+    <form id="register-form">
+      <h4>Đăng ký</h4>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Tên người dùng</label>
+        <input type="text" class="form-control inp-username" id="exampleInputPassword1">
+      </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Địa chỉ email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control inp-email" id="exampleInputEmail1" aria-describedby="emailHelp">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Mật khẩu đăng nhập</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="password" class="form-control inp-pwd" id="exampleInputPassword1">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nhập lại mật khẩu đăng nhập</label>
+        <input type="password" class="form-control inp-cf-pw" id="exampleInputPassword1">
       </div>
       <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <input type="checkbox" class="form-check-input checker" id="exampleCheck1" value="1">
+        <label class="form-check-label" for="exampleCheck1">Đồng ý với điều khoản sử dụng</label>
       </div>
-      <h4>Đăng nhập bằng hình thức khác</h4>
-      <div class="mb-3">
-        <button type="button" class="btn btn-outline-primary" id="signOutButton">Sign out</button>
-        <button id="googleSignIn" type="button" class="btn btn-outline-primary"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png" alt="" width="25px"></button>
-      </div>
-      <button type="submit" class="btn btn-primary">Đăng nhập</button>
+      <button type="submit" class="btn btn-primary w-100" style="border-radius:10px ;">Đăng ký</button>
+      <br><br>
     </form>
   </div>
   
@@ -94,7 +101,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Main JS File -->
   <script src="assets/js/firebase-config.js"></script>
-  <script src="assets/js/login.js"></script>
+  <script src="assets/js/sign-up.js"></script>
   <!-- <script src="assets/js/main.js"></script> -->
   <!-- <script src="assets/js/user-edit.js"></script> -->
 

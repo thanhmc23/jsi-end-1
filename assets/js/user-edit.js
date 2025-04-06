@@ -13,6 +13,46 @@
 // }
 
 // }
+let user_data_store = []
+const userList = JSON.parse(localStorage.getItem("user_data_store"));
+console.log(userList)
+
+db.collection("users")
+  .get()
+  .then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      user_data_store.push({
+        id: doc.id,
+        ...doc.data()
+      })
+      localStorage.setItem("user_data_store", JSON.stringify(user_data_store));
+      console.log(user_data_store);
+    });
+  })
+  .catch(function (error) {
+    console.error("Lỗi khi lấy dữ liệu: ", error);
+  });
+
+
+let user_display = document.getElementById("user_display");
+let sign_in = document.getElementById("sign-in");
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    sign_in.style.display = "none";
+    // user.style.display="inline-block"
+    var foundUser = userList.find(function(user_region) {
+      return user_region.email === user.email;
+    });    
+    user_display.innerText = `Xin chào , ${foundUser.username}`;
+    console.log("Đang đăng nhập:", foundUser.username);
+  } else {
+    user_display_a.style.display = "none";
+    // sign_in.style.display = "inline-block";
+    console.log("Người dùng chưa đăng nhập.");
+  }
+});
+
 const product_list = [];
 function render_item() {
   let doc1 = document.getElementById("product");
@@ -43,6 +83,9 @@ db.collection("product")
   .catch((error) => {
     console.log("Error getting documents: ", error);
   });
+
+
+
 
 // var docRef = db.collection("cities").doc("SF");
 
