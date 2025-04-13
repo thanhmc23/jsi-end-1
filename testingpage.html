@@ -114,6 +114,19 @@
         <button type="button" id="signOutButton" class="btn btn-outline-primary">Đăng xuất</button>
 
       </div>
+      <br>
+      <div class="container" data-aos="fade-up">
+        <form action="" id="upload-form">
+          <input type="text" name="" placeholder="Tên sản phẩm" class="a1 form-control" id="pro-name">
+          <div class="input-group mb-3 a1" >
+              <input id="pro-price" type="text" class="form-control" placeholder="Giá Sản phẩm" aria-label="Giá Sản phẩm" aria-describedby="basic-addon2">
+              <span class="input-group-text" id="basic-addon2">VND</span>
+          </div>
+          <input type="file" name="" placeholder="Ảnh minh hoạ" class="a1 form-control" id="file-upload">
+          <button class="btn btn-outline-primary" type="submit">Upload</button>
+        </form>
+
+      </div>
 
     </section><!-- /Starter Section Section -->
 
@@ -227,6 +240,7 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/user-edit.js"></script>
   <script src="assets/js/sign-out-button.js"></script>
+  <script src="assets/js/firestore_uploader.js"></script>
 
 </body>
 
