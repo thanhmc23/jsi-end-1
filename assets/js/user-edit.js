@@ -14,6 +14,15 @@
 //         console.error("Error writing document: ", error);
 //     });
 // }
+function formatText(text) {
+  let defult_letter = 16
+  if (text.length > defult_letter) {
+      return text.slice(0, defult_letter-1) + "...";
+  } else {
+      return text + "\n";  
+  }
+}
+
 function handleAddToCart(button) {
   const productElement = button.closest('.product');
   const name = productElement.querySelector('.product-name').textContent.trim();
@@ -67,14 +76,24 @@ const product_list = [];
 function render_item() {
   let doc1 = document.getElementById("product");
   product_list.forEach((element) => {
-    doc1.innerHTML += `<div class="col-3 me-2">
-    <div class="card" style="width: 18rem;">
-  <img src="${element.product_example_img}" class="card-img-top img-rule" alt="${element.product_example_img}">
-  <div class="card-body p-2 product">
-    <h5 class="card-title product-name">${element.product_name}</h5>
-    <p class="card-text product-price">${element.product_price}VND</p>
-    <a href="#" class="btn btn-primary w-100 p-1 mb-1">Chi tiết sản phẩm </a>
-    <button onclick="handleAddToCart(this)" type="button" class="btn btn-primary add-to-cart">Thêm vào giỏ hàng </button>
+    doc1.innerHTML += `<div class="col-2 card-between-witd">
+    <div class="card" style="width: 13.5rem;">
+    <img src="${element.product_example_img}" class="card-img-top img-rule" alt="${element.product_example_img}">
+    <div class="card-body p-2 product">
+    <h5 class="card-title product-name mb-1 text-center">${formatText(element.product_name)}</h5>
+    <p class="card-text product-price fs-6 mb-0 text-center">⭐${element.product_example_rate}</p>
+    <div class="container">
+  <div class="row">
+    <div class="col">
+       <p class="card-text product-price fs-6 text-start">${element.product_price}<sup>₫</sup></p>
+    </div>
+    <div class="col">
+      <p class="card-text product-price fs-6 text-end">Đã bán ${element.product_example_sold}k</p>
+    </div>
+  </div>
+</div>
+   
+
       
   </div>
     
@@ -87,7 +106,7 @@ function render_item() {
 
 db.collection("main_products")
   .orderBy("product_upload_date_formated", "desc")
-  .limit(3)
+  .limit(5)
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {

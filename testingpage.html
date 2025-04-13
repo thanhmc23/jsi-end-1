@@ -41,9 +41,10 @@
 <body class="starter-page-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div
+      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0" >
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/main-logo.png" alt="" width="150px">
@@ -53,10 +54,12 @@
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="#about">Tìm kiếm</a></li>
-          <li class="dropdown"><a href="#"><span>Ngành hàng</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Ngành hàng</span> <i
+                class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                    class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="#">Deep Dropdown 1</a></li>
                   <li><a href="#">Deep Dropdown 2</a></li>
@@ -118,14 +121,31 @@
       <div class="container" data-aos="fade-up">
         <form action="" id="upload-form">
           <input type="text" name="" placeholder="Tên sản phẩm" class="a1 form-control" id="pro-name">
-          <div class="input-group mb-3 a1" >
-              <input id="pro-price" type="text" class="form-control" placeholder="Giá Sản phẩm" aria-label="Giá Sản phẩm" aria-describedby="basic-addon2">
-              <span class="input-group-text" id="basic-addon2">VND</span>
+          <div class="input-group mb-3 a1">
+            <input id="pro-price" type="text" class="form-control" placeholder="Giá Sản phẩm" aria-label="Giá Sản phẩm"
+              aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">VND</span>
           </div>
           <input type="file" name="" placeholder="Ảnh minh hoạ" class="a1 form-control" id="file-upload">
           <button class="btn btn-outline-primary" type="submit">Upload</button>
+          <!-- <button type="button" class="btn btn-outline-primary" id="liveToastBtn" type="submit">Upload</button> -->
+
         </form>
 
+      </div>
+
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+          </div>
+        </div>
       </div>
 
     </section><!-- /Starter Section Section -->
@@ -233,14 +253,17 @@
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
 
-    <!-- Firebase Auth -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js" integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Firebase Auth -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+    integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Main JS File -->
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/user-edit.js"></script>
   <script src="assets/js/sign-out-button.js"></script>
   <script src="assets/js/firestore_uploader.js"></script>
+  <script src="assets/js/boottrap-toast.js"></script>
 
 </body>
 

@@ -3,7 +3,20 @@ const cloudinaryConfig = {
     api_key: '989442838777222',
     api_secret: '62wSAsa1wYdPfBl5MjyB6XkMFlI'
 };
-
+function randomStarRate() {
+    let max = 5.0
+    let min = 3.0
+    let decimals = 2
+    let value = Math.random() * (max - min) + min;
+    return value.toFixed(decimals)
+}
+function getRandomSold() {
+    let min = 1000;
+    let max = 99999;
+    let decimals = 1
+    value = Math.floor(Math.random() * (max - min + 1)) + min;
+    return `${(value/1000).toFixed(decimals)} , origin ${value}`
+}
 document.getElementById('upload-form').addEventListener('submit', async function (event) {
     event.preventDefault();
     let name = document.getElementById("pro-name").value
@@ -22,6 +35,8 @@ document.getElementById('upload-form').addEventListener('submit', async function
     console.log('File URL:', data.secure_url);
 
     db.collection("main_products").add({
+        product_example_rate: randomStarRate(),
+        product_example_sold : getRandomSold(),
         product_name: name,
         product_price: price,
         product_example_img: data.secure_url,
@@ -30,9 +45,12 @@ document.getElementById('upload-form').addEventListener('submit', async function
     })
     .then((docRef) => {
         console.log("Document written with ID: ", docRef.id);
+        alert("Upload thành công")
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
+        alert("Upload thất bại")
+
         
     });
 });
