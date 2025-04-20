@@ -108,25 +108,91 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Starter Section</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Tài khoản</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up">
-        <p>Use this page as a starter for your own custom pages.</p>
         <button type="button" id="signOutButton" class="btn btn-outline-primary">Đăng xuất</button>
 
       </div>
       <br>
       <div class="container" data-aos="fade-up">
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Đăng tải hàng hoá muốn bán</h2>
+        </div><!-- End Section Title -->
         <form action="" id="upload-form">
-          <input type="text" name="" placeholder="Tên sản phẩm" class="a1 form-control" id="pro-name">
-          <div class="input-group mb-3 a1">
+          <input type="text" name="" placeholder="Tên sản phẩm" class="a1 form-control mb-1" id="pro-name">
+          <input type="text" name="" placeholder="Mức giảm giá cho sản phẩm (%) (để 0 nếu không muốn giảm)" class="a1 form-control mb-1" id="pro-sale">
+          <select class="form-select mb-1" aria-label="Default select example" id="pro-type">
+            <option value="none">Chọn nghành hàng</option>
+            <option value="dien_thoai_thiet_bi_dien_tu" title="Các sản phẩm điện thoại, phụ kiện và thiết bị điện tử">Điện thoại & Thiết bị điện tử</option>
+            <option value="do_gia_dung_noi_that" title="Đồ gia dụng và nội thất cho gia đình">Đồ gia dụng & Nội thất</option>
+            <option value="thoi_trang" title="Quần áo, giày dép, phụ kiện thời trang">Thời trang</option>
+            <option value="my_pham_cham_soc_ca_nhan" title="Mỹ phẩm, các sản phẩm chăm sóc da và tóc">Mỹ phẩm & Chăm sóc cá nhân</option>
+            <option value="thuc_pham_do_uong" title="Thực phẩm chức năng, đồ ăn và thức uống">Thực phẩm & Đồ uống</option>
+            <option value="do_me_va_be" title="Đồ dùng cho mẹ và bé, đồ chơi trẻ em">Đồ mẹ & Bé</option>
+            <option value="den_thiet_bi_chieu_sang" title="Đèn trang trí và các thiết bị chiếu sáng">Đèn & Thiết bị chiếu sáng</option>
+            <option value="sua_chua_phu_kien_xe" title="Phụ kiện xe và dụng cụ sửa chữa xe">Sửa chữa & Phụ kiện xe</option>
+            <option value="cham_soc_thu_cung_the_thao" title="Các sản phẩm cho thú cưng và dụng cụ thể thao">Chăm sóc thú cưng & Thể thao</option>
+            <option value="sach_van_phong_pham" title="Sách, văn phòng phẩm và dụng cụ học tập">Sách & Văn phòng phẩm</option>
+            <option value="qua_tang_do_luu_niem" title="Quà tặng, đồ lưu niệm cho các dịp đặc biệt">Quà tặng & Đồ lưu niệm</option>
+            <option value="vat_lieu_xay_dung_nong_san" title="Vật liệu xây dựng và các sản phẩm nông sản">Vật liệu xây dựng & Nông sản</option>
+            <option value="thiet_bi_dien_lanh_may_loc" title="Thiết bị điện lạnh và các sản phẩm lọc nước, không khí">Thiết bị điện lạnh & Máy lọc</option>
+            <option value="phan_mem_game" title="Phần mềm, ứng dụng và các vật phẩm trong game">Phần mềm & Game</option>
+            <option value="dich_vu_ve" title="Dịch vụ trực tuyến và các loại vé (vé du lịch, vé sự kiện)">Dịch vụ & Vé</option>
+            <option value="ban_do_ve_sinh" title="Các sản phẩm làm sạch nhà cửa, phòng tắm">Bàn chải, đồ vệ sinh</option>
+            <option value="dien_lanh" title="Các thiết bị điện lạnh như máy lạnh, quạt, tủ lạnh">Điện lạnh</option>
+            <option value="cuon_sach_khoa_hoc" title="Sách nghiên cứu, sách khoa học chuyên ngành">Sách khoa học</option>
+            <option value="du_lich" title="Dịch vụ du lịch, các tour du lịch trong và ngoài nước">Du lịch</option>
+            <option value="cham_soc_suc_khoe" title="Các sản phẩm chăm sóc sức khỏe, thiết bị y tế">Chăm sóc sức khỏe</option>
+            <option value="thuong_mai_dien_tu" title="Các dịch vụ thương mại điện tử, sàn giao dịch online">Thương mại điện tử</option>
+            <option value="sieu_thi" title="Các mặt hàng siêu thị từ thực phẩm đến đồ dùng gia đình">Siêu thị</option>
+            <option value="dien_quang" title="Đèn chiếu sáng và thiết bị chiếu sáng năng lượng mặt trời">Điện quang</option>
+            <option value="san_pham_eco" title="Các sản phẩm sinh thái, bảo vệ môi trường">Sản phẩm eco</option>
+            <option value="san_pham_thu_duc" title="Các sản phẩm đặc sản khu vực Thủ Đức, thành phố Hồ Chí Minh">Sản phẩm Thủ Đức</option>
+            <option value="da_lieu_sinh_hoc" title="Các vật liệu sinh học từ tự nhiên hoặc nhân tạo">Đá liệu sinh học</option>
+            <option value="dich_vu_lap_dat" title="Các dịch vụ lắp đặt thiết bị gia đình, điện tử, điện lạnh">Dịch vụ lắp đặt</option>
+            <option value="cuoi_hoi" title="Các dịch vụ tổ chức tiệc cưới, dịch vụ chụp ảnh cưới">Cưới hỏi</option>
+            <option value="dich_vu_thuc_tap" title="Các dịch vụ dành cho thực tập sinh, tư vấn nghề nghiệp">Dịch vụ thực tập</option>
+            <option value="thuc_pham_huu_co" title="Các sản phẩm thực phẩm hữu cơ, sạch">Thực phẩm hữu cơ</option>
+            <option value="mat_hang_xuat_khau" title="Các sản phẩm xuất khẩu sang các quốc gia khác">Hàng xuất khẩu</option>
+            <option value="mat_hang_nhap_khau" title="Các sản phẩm nhập khẩu từ các quốc gia khác">Hàng nhập khẩu</option>
+            <option value="dien_thoai_phu_kien" title="Các phụ kiện điện thoại: sạc, tai nghe, ốp lưng">Phụ kiện điện thoại</option>
+            <option value="tui_xach_phu_kien" title="Các loại túi xách, balo và phụ kiện thời trang">Túi xách & Phụ kiện</option>
+            <option value="kinh_doanh_bat_dong_san" title="Mua bán, cho thuê nhà đất, bất động sản">Bất động sản</option>
+            <option value="dich_vu_hinh_anh_video" title="Chụp ảnh, quay phim, chỉnh sửa hình ảnh, video">Dịch vụ hình ảnh & Video</option>
+            <option value="kinh_doanh_tu_xa" title="Các mô hình kinh doanh, khởi nghiệp từ xa">Kinh doanh từ xa</option>
+            <option value="san_pham_tu_nhien" title="Các sản phẩm tự nhiên, thủ công mỹ nghệ, handmade">Sản phẩm tự nhiên</option>
+            <option value="vay_tien_online" title="Các dịch vụ vay tiền trực tuyến nhanh chóng">Vay tiền online</option>
+            <option value="chung_cu" title="Các căn hộ chung cư, nhà ở cho thuê hoặc bán">Chung cư</option>
+            <option value="thiet_bi_am_thanh" title="Các thiết bị âm thanh: loa, tai nghe, micro">Thiết bị âm thanh</option>
+            <option value="phan_phoi_hang_hoa" title="Các dịch vụ phân phối sản phẩm, hàng hóa cho các công ty">Phân phối hàng hóa</option>
+            <option value="xe_may_o_to" title="Các loại xe máy, ô tô và các phụ kiện liên quan">Xe máy & Ô tô</option>
+            <option value="may_tinh_laptop" title="Máy tính để bàn, laptop, phụ kiện máy tính">Máy tính & Laptop</option>
+            <option value="giai_tri" title="Các dịch vụ giải trí như nhạc, phim, trò chơi">Giải trí</option>
+            <option value="do_choi_hoi_hoi" title="Đồ chơi trẻ em, đồ chơi giải trí, phát triển kỹ năng">Đồ chơi & Hội hoạ</option>
+            <option value="thiet_bi_cong_nghiep" title="Các thiết bị công nghiệp, máy móc phục vụ sản xuất">Thiết bị công nghiệp</option>
+            <option value="thuc_pham_nhieu_loai" title="Các thực phẩm chế biến sẵn, tươi sống">Thực phẩm nhiều loại</option>
+            <option value="cham_soc_da" title="Sản phẩm chăm sóc da như kem dưỡng, mặt nạ">Chăm sóc da</option>
+            <option value="thoat_hoi" title="Các dịch vụ giảm stress, thư giãn">Thư giãn & Thoát hơi</option>
+            <option value="hoc_mai" title="Các dịch vụ học tập online, trường học">Học online</option>
+            <option value="hang_hoa_san_xuat" title="Hàng hóa sản xuất trong nước">Hàng sản xuất trong nước</option>
+            <option value="tu_sua_cai_hao" title="Sửa chữa và cải thiện các sản phẩm gia đình, xe cộ">Sửa chữa & Cải thiện</option>
+            <option value="mat_hang_nong_san" title="Sản phẩm nông sản, trái cây, rau củ">Nông sản</option>
+            <option value="do_choi_tre_em" title="Đồ chơi, sách vở, đồ dùng cho trẻ em">Đồ chơi trẻ em</option>
+            <option value="laptop_may_tinh_ban" title="Máy tính bàn, laptop các loại, phụ kiện">Laptop & Máy tính</option>
+            <option value="tai_nghe_dien_tu" title="Tai nghe, loa và các thiết bị âm thanh">Tai nghe & Âm thanh</option>
+            <option value="vay_theo_ky" title="Các dịch vụ cho vay theo kỳ, khoản tín dụng">Vay theo kỳ</option>
+            <option value="tu_sua_cai_hao" title="Sửa chữa và bảo trì các thiết bị điện tử, máy móc">Sửa chữa máy móc</option>
+            <option value="hien_thi_san_pham" title="Các sản phẩm trưng bày, mẫu thử tại các cửa hàng">Hiển thị sản phẩm</option>
+            <option value="cuoc_thi_hoa_hau" title="Các cuộc thi sắc đẹp, hoa hậu">Cuộc thi sắc đẹp</option>
+          </select>
+          <div class="input-group a1 mb-1">
             <input id="pro-price" type="text" class="form-control" placeholder="Giá Sản phẩm" aria-label="Giá Sản phẩm"
               aria-describedby="basic-addon2">
             <span class="input-group-text" id="basic-addon2">VND</span>
           </div>
-          <input type="file" name="" placeholder="Ảnh minh hoạ" class="a1 form-control" id="file-upload">
+          <input type="file" name="" placeholder="Ảnh minh hoạ" class="a1 form-control mb-1" id="file-upload">
           <button class="btn btn-outline-primary" type="submit">Upload</button>
           <!-- <button type="button" class="btn btn-outline-primary" id="liveToastBtn" type="submit">Upload</button> -->
 
@@ -134,19 +200,7 @@
 
       </div>
 
-      <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header">
-            <img src="..." class="rounded me-2" alt="...">
-            <strong class="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body">
-            Hello, world! This is a toast message.
-          </div>
-        </div>
-      </div>
+     
 
     </section><!-- /Starter Section Section -->
 

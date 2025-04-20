@@ -2341,3 +2341,21 @@ section,
 .card-between-witd{
   margin-right:30px ;
 }
+.bold{
+  font-weight: bold;
+}
+
+.sale {
+  margin-top: 4px ;
+  width: 90px;
+  align-items: center;
+  background-color: #feeeea;
+  border-radius: 10px;
+  color: #ee4d2d;
+  display: inline-flex;
+  font-size: 20px;
+  font-weight: 700;
+  height: 35px;
+  justify-content: center;
+  padding: 0 4px;
+}

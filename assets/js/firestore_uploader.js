@@ -5,17 +5,26 @@ const cloudinaryConfig = {
 };
 function randomStarRate() {
     let max = 5.0
-    let min = 3.0
+    let min = 2.0
     let decimals = 2
     let value = Math.random() * (max - min) + min;
     return value.toFixed(decimals)
 }
 function getRandomSold() {
     let min = 1000;
-    let max = 99999;
+    let max = 999999;
     let decimals = 1
     value = Math.floor(Math.random() * (max - min + 1)) + min;
-    return `${(value/1000).toFixed(decimals)} , origin ${value}`
+    return `${(value/1000).toFixed(decimals)}`
+}
+function randomString(length = 10) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }   
+    return result;
 }
 document.getElementById('upload-form').addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -35,6 +44,9 @@ document.getElementById('upload-form').addEventListener('submit', async function
     console.log('File URL:', data.secure_url);
 
     db.collection("main_products").add({
+        product_example_sale : document.getElementById("pro-sale").value,
+        product_example_type : document.getElementById("pro-type").value,
+        product_example_id: randomString(), 
         product_example_rate: randomStarRate(),
         product_example_sold : getRandomSold(),
         product_name: name,

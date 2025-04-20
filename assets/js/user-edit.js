@@ -14,8 +14,11 @@
 //         console.error("Error writing document: ", error);
 //     });
 // }
+function goToDetail(id) {
+  window.location.href = `detail.html?id=${id}`;
+}
 function formatText(text) {
-  let defult_letter = 16
+  let defult_letter = 24
   if (text.length > defult_letter) {
       return text.slice(0, defult_letter-1) + "...";
   } else {
@@ -76,20 +79,13 @@ const product_list = [];
 function render_item() {
   let doc1 = document.getElementById("product");
   product_list.forEach((element) => {
-    doc1.innerHTML += `<div class="col-2 card-between-witd">
+    doc1.innerHTML += `<div id="${element.product_example_id}" class="col-2 card-between-witd" onclick="goToDetail(this.id)">
     <div class="card" style="width: 13.5rem;">
     <img src="${element.product_example_img}" class="card-img-top img-rule" alt="${element.product_example_img}">
     <div class="card-body p-2 product">
-    <h5 class="card-title product-name mb-1 text-center">${formatText(element.product_name)}</h5>
-    <p class="card-text product-price fs-6 mb-0 text-center">⭐${element.product_example_rate}</p>
-    <div class="container">
-  <div class="row">
-    <div class="col">
-       <p class="card-text product-price fs-6 text-start">${element.product_price}<sup>₫</sup></p>
-    </div>
-    <div class="col">
-      <p class="card-text product-price fs-6 text-end">Đã bán ${element.product_example_sold}k</p>
-    </div>
+    <p class="card-title product-name mb-1 text-start bold">${formatText(element.product_name)}</p>
+    <p class="card-text product-price fs-6 mb-0 text-start fs-5"> ${element.product_price}<sup>₫</sup></p>
+    <p class="card-text product-price fs-6 mb-0 text-start">⭐${element.product_example_rate}</p>
   </div>
 </div>
    
