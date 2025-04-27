@@ -1,26 +1,50 @@
+let count = 1
+let count_current = 1;
+let count_new = 1;
+let CurrentId = null;
+const counterInput  = document.getElementById('counter');
 
+function multiplyAndFormatWithDots(stringNumber,multiplyNum) {
+  const number = parseInt(stringNumber.replace(/\./g, ''));
+
+  const multipliedNumber = number * multiplyNum;
+
+  const formattedResult = multipliedNumber.toLocaleString('en-US').replace(/,/g, '.');
+
+  return formattedResult;
+}
+
+function getId(button) {
+  const parentDiv = button.closest('.card.mb-3'); 
+  if (parentDiv) {
+      CurrentId = parentDiv.id;
+      console.log('ID của thẻ cha:', parentDiv.id);
+  } else {
+      console.log('Không tìm thấy thẻ cha.');
+  }
+}
+
+const localUserId = localStorage.getItem("CurrentUserId");
 function getUserCart() {
   db.collection('users')
-    .doc(userId)
+    .doc(localUserId)
     .collection('cart')
     .get()
     .then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-        console.log(doc.data().id);
-        console.log(doc.data().createdAt);
+        console.log(doc.id)
         let te = doc.data().createdAt
         var milliseconds = te.seconds * 1000 + te.nanoseconds / 1000000;
         var date = new Date(milliseconds);
-        getDocIdByProductExampleId(doc.data().id,doc.data().number,date.toLocaleString('vi-VN'));
+        getDocIdByProductExampleId(doc.data().id,doc.data().number,date.toLocaleString('vi-VN'),doc.id);
         
-        // console.log(doc.);
       });
     })
     .catch(function(error) {
       console.log("Error getting documents: ", error);
     });
 }
-function getDocIdByProductExampleId(exampleId,num,date) {
+function getDocIdByProductExampleId(exampleId,num,date,firebaseCartId) {
     db.collection('main_products')
       .where('product_example_id', '==', exampleId)
       .get()
@@ -30,20 +54,24 @@ function getDocIdByProductExampleId(exampleId,num,date) {
         } 
         else {
           querySnapshot.forEach(function(doc) {
-            console.log('Document ID:', doc.id);
-            console.log('Dữ liệu:', doc.data());
-            document.getElementById("respond_item").innerHTML += `<div class="card mb-3" >
-  <div class="row g-0">
-    <div class="col-md-4">
+            let complete_price = multiplyAndFormatWithDots(doc.data().product_price,num)
+            document.getElementById("respond_item").innerHTML += `<div class="card mb-3 cart-item" id=${firebaseCartId}>
+  <div class="row g-0" id=${firebaseCartId}>
+    <div class="col-md-2">
       <img src="${doc.data().product_example_img}" class="img-fluid rounded-start" alt="...">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="card-body">
         <h5 class="card-title">${doc.data().product_name}</h5>
-        <p class="card-text">Giá sản phẩm : ${doc.data().product_price}</p>
-        <p class="card-text">Số lượng đã đặt : ${num}</p>
+        <p class="card-text mb-0">Giá sản mỗi phẩm : ${doc.data().product_price}<sup>₫</sup></p>
+        <p class="card-text mb-0">Số lượng đã đặt : ${num}</p>
+        <p class="card-text mb-0">Thanh tiền ( Giá sản mỗi phẩm x Số lượng đã đặt) : ${complete_price}<sup>₫</sup></p>
+        <p class="card-text mb-1"><small class="text-body-secondary">Được thêm vào giỏ hàng lúc ${date}</small></p>
+        <button type="button" class="btn btn-success">Thanh toán ngay</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="getId(this)">Chỉnh sửa mặt hàng</button>
+        <button type="button" class="btn btn-danger" onclick="getId(this)" data-bs-toggle="modal" data-bs-target="#delmodal">Xoá mặt hàng</button>
 
-        <p class="card-text"><small class="text-body-secondary">Được thêm vào giỏ hàng lúc ${date}</small></p>
+
       </div>
     </div>
   </div>
@@ -55,4 +83,71 @@ function getDocIdByProductExampleId(exampleId,num,date) {
       .catch(function(error) {
         console.error('Lỗi khi tìm document:', error);
       });
+}
+function deleteItemDoc() {
+  var db = firebase.firestore();
+
+  db.collection('users')
+    .doc(localUserId)
+    .collection('cart')
+    .doc(CurrentId)
+    .delete()
+    .then(function() {
+        alert("Xoá thành công!")
+        location.reload();
+        console.log("Document đã được xoá thành công!");
+    })
+    .catch(function(error) {
+        console.error("Lỗi khi xoá document: ", error);
+    });
+}
+function updateSubcollectionDocument() {
+  db.collection('users')      
+    .doc(localUserId)              
+    .collection('cart')       
+    .doc(CurrentId)               
+    .update({
+      number:count_current,
+    })
+    .then(function() {
+      console.log("Cập nhật thành công!");
+      alert("Cập nhật thành công!")
+      location.reload();
+    })
+    .catch(function(error) {
+      console.error(error);
+    });
+}
+
+getUserCart()
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})
+
+
+console.log(count_current)
+
+function increment() {
+  count_current++;
+  counterInput.value = count_current;
+}
+
+function decrement() {
+  if (count_current > 0) {
+    count_current--;
+    counterInput.value = count_current;
+  }
+}
+
+function updateCount(newValue) {
+  const parsedValue = parseInt(newValue);
+  if (!isNaN(parsedValue)) {
+    count_current = parsedValue;
+  } else {
+    // Nếu giá trị nhập không hợp lệ, khôi phục giá trị trước đó hoặc đặt về 0/1
+    counterInput.value = count_current;
+  }
 }

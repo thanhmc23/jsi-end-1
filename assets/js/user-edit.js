@@ -56,6 +56,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     user_detail.push(user.multiFactor.user);
     var uid = user.uid;
     userId = user_detail[0].uid;
+    localStorage.setItem("CurrentUserId", userId);
     sign_in.style.display = "none";
     // user.style.display="inline-block"
     var foundUser = userList.find(function (user_region) {
