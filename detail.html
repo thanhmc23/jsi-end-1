@@ -15,7 +15,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,9 +41,10 @@
 <body class="starter-page-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div
+      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0" >
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/main-logo.png" alt="" width="150px">
@@ -51,10 +54,12 @@
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
           <li><a href="#about">Tìm kiếm</a></li>
-          <li class="dropdown"><a href="#"><span>Ngành hàng</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Ngành hàng</span> <i
+                class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
+                    class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="#">Deep Dropdown 1</a></li>
                   <li><a href="#">Deep Dropdown 2</a></li>
@@ -77,7 +82,8 @@
 
       <a class="btn-getstarted" href="login.html" id="sign-in">Đăng nhập</a>
       <!-- <p class="btn-getstarted" href="" id="user_display">Đăng nhập</p> -->
-      <a id="user_display_a" href="testingpage.html"><button style="border-radius: 100px;" type="button" class="btn btn-outline-dark" id="user_display">Dark</button></a>
+      <a id="user_display_a" href="testingpage.html"><button style="border-radius: 100px;" type="button"
+          class="btn btn-outline-dark" id="user_display">Dark</button></a>
 
 
 
@@ -86,48 +92,70 @@
 
   <main style="margin-top: 100px;" class="main">
 
-    
-   
 
-    
-    
+
+
+
+
     <section id="starter-section" class="starter-section section">
 
-      <div class="container">
+      <div class="container ">
         <div class="row">
           <div class="col">
             <img id="pro_img_detail" src="" alt="" width="500px">
           </div>
-          <div class="col">
-            <h1 id="pro_name_detail">Tên</h1>
+          <div class="col product">
+            <h1 id="pro_name_detail" class="pro_name_detail">Tên</h1>
             <div class="container">
-              <div class="row">
+              <div class="row"> 
                 <div class="col-4 ps-0" id="pro_rate_detail">
-                  Đánh giá : 
+                  Đánh giá :
                 </div>
                 <div class="col" id="pro_sold_detail" style="border-left: 1px black solid;">
-                  Lượt mua : 
+                  Lượt mua :
                 </div>
-            </div>
-          </div>
-          <div class="container mt-2">
-            <div class="row">
-              <div class="col-6 ps-0 pe-0">
-                <div class="ps-0 fs-2" style="color: #ee4d2d;" id="pro_price_detail"></div>
-              </div>
-              <div class="col ps-0" id="sale">
-                
               </div>
             </div>
-          </div>
-  
+            <div class="container mt-2">
+              <div class="row">
+                <div class="col-6 ps-0 pe-0">
+                  <div class="ps-0 fs-2 pro_price_detail" style="color: #ee4d2d;" id="pro_price_detail"></div>
+                </div>
+                <div class="col ps-0" id="sale">
 
-          <button type="button" class="btn btn-primary w-100 mb-2 mt-2">Mua ngay</button><br>
-          <button type="button" class="btn btn-outline-primary w-100">Thêm vào giỏ hàng</button>
+                </div>
+              </div>
+            </div>
+
+
+            <button type="button" class="btn btn-primary w-100 mb-2 mt-2">Mua ngay</button><br>
+            <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm vào giỏ hàng</button>
+            <!-- <button type="button" class="btn btn-outline-primary w-100">Thêm vào giỏ hàng</button> -->
+          </div>
         </div>
       </div>
 
     </section><!-- /Starter Section Section -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm vào giỏ hàng</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body confirm">
+            <div class="form-floating">
+              <textarea class="form-control number" placeholder="Leave a comment here" id="sl"></textarea>
+              <label for="floatingTextarea">Số lượng</label>
+            </div>
+          </div>
+          <div class="modal-footer" id="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary add-to-cart" onclick="addToCart()">Thêm</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </main>
 
@@ -214,7 +242,8 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -230,14 +259,16 @@
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage-compat.js"></script>
 
-    <!-- Firebase Auth -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js" integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Firebase Auth -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.13.1/firebase-auth-compat.min.js"
+    integrity="sha512-b2PGOE6ClpdFR5WZylPqJ9NEtHyGtdXKIe5wI0qRKVg3VeH9Km8CvihpnySwf6v21TV2cMTUp/BuglUiFLB38Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Main JS File -->
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/user-edit.js"></script>
   <script src="assets/js/detail.js"></script>
-  
+
 
 </body>
 

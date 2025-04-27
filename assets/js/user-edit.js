@@ -18,22 +18,12 @@ function goToDetail(id) {
   window.location.href = `detail.html?id=${id}`;
 }
 function formatText(text) {
-  let defult_letter = 24
+  let defult_letter = 24;
   if (text.length > defult_letter) {
-      return text.slice(0, defult_letter-1) + "...";
+    return text.slice(0, defult_letter - 1) + "...";
   } else {
-      return text + "\n";  
+    return text + "\n";
   }
-}
-
-function handleAddToCart(button) {
-  const productElement = button.closest('.product');
-  const name = productElement.querySelector('.product-name').textContent.trim();
-  const price = productElement.querySelector('.product-price').textContent.trim();
-
-  const item = { name, price };
-
-  console.log("Đã chọn sản phẩm:", item);
 }
 
 let user_data_store = [];
@@ -58,9 +48,14 @@ db.collection("users")
 
 let user_display = document.getElementById("user_display");
 let sign_in = document.getElementById("sign-in");
-
+const user_detail = [];
+let userId = "";
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
+    console.log(user.multiFactor.user);
+    user_detail.push(user.multiFactor.user);
+    var uid = user.uid;
+    userId = user_detail[0].uid;
     sign_in.style.display = "none";
     // user.style.display="inline-block"
     var foundUser = userList.find(function (user_region) {
@@ -74,18 +69,30 @@ firebase.auth().onAuthStateChanged(function (user) {
     console.log("Người dùng chưa đăng nhập.");
   }
 });
+console.log(user_detail);
 
 const product_list = [];
 function render_item() {
   let doc1 = document.getElementById("product");
   product_list.forEach((element) => {
-    doc1.innerHTML += `<div id="${element.product_example_id}" class="col-2 card-between-witd" onclick="goToDetail(this.id)">
+    let display_price = element.product_price.split(";");
+    doc1.innerHTML += `<div id="${
+      element.product_example_id
+    }" class="col-2 card-between-witd" onclick="goToDetail(this.id)">
     <div class="card" style="width: 13.5rem;">
-    <img src="${element.product_example_img}" class="card-img-top img-rule" alt="${element.product_example_img}">
+    <img src="${
+      element.product_example_img
+    }" class="card-img-top img-rule" alt="${element.product_example_img}">
     <div class="card-body p-2 product">
-    <p class="card-title product-name mb-1 text-start bold">${formatText(element.product_name)}</p>
-    <p class="card-text product-price fs-6 mb-0 text-start fs-5"> ${element.product_price}<sup>₫</sup></p>
-    <p class="card-text product-price fs-6 mb-0 text-start">⭐${element.product_example_rate}</p>
+    <p class="card-title product-name mb-1 text-start bold">${formatText(
+      element.product_name
+    )}</p>
+    <p class="card-text product-price fs-6 mb-0 text-start fs-5"> ${
+      display_price[0]
+    }<sup>₫</sup></p>
+    <p class="card-text product-price fs-6 mb-0 text-start">⭐${
+      element.product_example_rate
+    }</p>
   </div>
 </div>
    
@@ -116,7 +123,6 @@ db.collection("main_products")
   .catch((error) => {
     console.log("Error getting documents: ", error);
   });
-
 
 // var docRef = db.collection("cities").doc("SF");
 

@@ -17,10 +17,18 @@ document.getElementById("googleSignIn").addEventListener("click", () => {
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
+      
       console.log("User signed in successfully.");
-      const user = result.user;
+      const user = result.user.multiFactor.user;
       console.log(user);
-      // ...
+      firebase.firestore().collection("users").doc(user.uid).set({
+        username: user.displayName, 
+        email: user.email,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(), 
+        uid : user.uid
+      })
+      window.location.href = "./index.html";
+
     })
     .catch((error) => {
       // Handle errors.
