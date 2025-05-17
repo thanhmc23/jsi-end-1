@@ -11,7 +11,7 @@ db.collection("main_products")
       document.getElementById("pro_name_detail").innerText =
         doc.data().product_name;
       document.getElementById("pro_price_detail").innerHTML = `${
-        doc.data().product_price
+        doc.data().product_price.toLocaleString("vi-VN")
       }<sup>₫</sup>`;
       document.getElementById("pro_rate_detail").innerText = `Đánh giá : ${
         doc.data().product_example_rate

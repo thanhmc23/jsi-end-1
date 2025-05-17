@@ -33,7 +33,7 @@ document.getElementById('upload-form').addEventListener('submit', async function
     const file = document.getElementById('file-upload').files[0];
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'cafe-1'); // Thay 'your_upload_preset' bằng tên upload preset bạn đã tạo
+    formData.append('upload_preset', 'cafe-1'); 
 
     const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudinaryConfig.cloud_name}/upload`, {
         method: 'POST',
@@ -50,7 +50,7 @@ document.getElementById('upload-form').addEventListener('submit', async function
         product_example_rate: randomStarRate(),
         product_example_sold : getRandomSold(),
         product_name: name,
-        product_price: price,
+        product_price: Number(price.replace(/\./g, '')) ,
         product_example_img: data.secure_url,
         product_upload_date : new Date().getTime(),
         product_upload_date_formated : firebase.firestore.FieldValue.serverTimestamp()

@@ -25,7 +25,8 @@ document.getElementById("googleSignIn").addEventListener("click", () => {
         username: user.displayName, 
         email: user.email,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(), 
-        uid : user.uid
+        uid : user.uid,
+        isAdmin : false ,
       })
       window.location.href = "./index.html";
 

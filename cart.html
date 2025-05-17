@@ -42,10 +42,9 @@
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div
-      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0" >
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/main-logo.png" alt="" width="150px">
@@ -54,28 +53,8 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">Tìm kiếm</a></li>
-          <li class="dropdown"><a href="#"><span>Ngành hàng</span> <i
-                class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                    class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#pricing">Hội viên</a></li>
-          <li><a href="#contact">Giỏ hàng</a></li>
+          <li><a href="search.html">Tìm kiếm</a></li>
+          <li><a href="./cart.html">Đơn hàng</a></li>
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -83,8 +62,7 @@
 
       <a class="btn-getstarted" href="login.html" id="sign-in">Đăng nhập</a>
       <!-- <p class="btn-getstarted" href="" id="user_display">Đăng nhập</p> -->
-      <a id="user_display_a" href="testingpage.html"><button style="border-radius: 100px;" type="button"
-          class="btn btn-outline-dark" id="user_display">Dark</button></a>
+      <a id="user_display_a" href="testingpage.html"><button style="border-radius: 100px;" type="button" class="btn btn-outline-dark" id="user_display">Dark</button></a>
 
 
 
@@ -93,19 +71,26 @@
   <main class="main">
     <div class="page-title light-background">
       <div class="container">
-        <h1>Giỏ hàng</h1>
+        <h1>Đơn hàng</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Giỏ hàng</li>
+            <li class="current">Đơn hàng</li>
           </ol>
         </nav>
       </div>
 
     </div>
-    <br><br>
-    <div class="container" id="respond_item">
+    <br>
+    <div class="btn-group" role="group" aria-label="Basic example" style="display: block; margin-left: auto; margin-right: auto; width: fit-content;">
+      <button type="button" class="btn btn-primary" onclick="getUserCart()">Giỏ hàng</button>
+      <button type="button" class="btn btn-primary" onclick="getUserPurchase()">Đơn hàng đã thanh toán / đang vận chuyển</button>
+      <button type="button" class="btn btn-primary">Đơn hàng đã nhận</button>
+    </div> 
+    <br>
 
+    <div class="container" id="respond_item">
+      <h1 style="display: block; margin-left: auto; margin-right: auto; width: fit-content;" id="start">Chọn một mục để bắt đầu</h1>
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -150,80 +135,84 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="cancelmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Xoá mặt hàng này?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger" role="alert">
+              Bạn chắc chắn là bạn sẽ huỷ mặt hàng này ra khỏi đơn mua của bạn không? <b>Chúng tôi sẽ không hỗ trợ khôi phục</b>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tôi cần suy nghĩ lại</button>
+            <button type="button" class="btn btn-danger" onclick="calloffItem()">Huỷ ngay!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Thanh Toán Tượng Trưng</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <!-- 1. Thông tin sản phẩm -->
+            <h6>1. Thông tin sản phẩm</h6>
+            <p id="productInfo"></p>
+  
+            <!-- 2. Người mua -->
+            <h6>2. Thông tin người mua</h6>
+            <input class="form-control mb-2" id="name" placeholder="Họ tên">
+            <input class="form-control mb-2" id="email" placeholder="Email">
+            <input class="form-control mb-2" id="phoneNum" placeholder="Số điện thoại">
+            <input class="form-control mb-2" id="address" placeholder="Địa chỉ">
+  
+            <!-- 3. Phương thức thanh toán -->
+            <h6>3. Phương thức thanh toán</h6>
+            <select class="form-select mb-2" id="payment" onblur="toggleCardFields()">
+              <option value="">-- Chọn phương thức --</option>
+              <option value="cod">COD</option>
+              <option value="momo">Momo</option>
+              <option value="vnpay">VNPay</option>
+              <option value="card">Thẻ</option>
+            </select>
+
+            <div id="cardFields" class="d-none">
+              <input class="form-control mb-2" id="cardNumber" placeholder="Số thẻ">
+              <input class="form-control mb-2" id="cardExpiry" placeholder="Ngày hết hạn (MM/YY)">
+              <input class="form-control mb-2" id="cardCVV" placeholder="CVV">
+            </div>
+  
+            <!-- Thông báo lỗi -->
+            <div class="alert alert-danger d-none" id="errorMsg">Vui lòng điền đầy đủ thông tin!</div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+            <button class="btn btn-success" onclick="fakeCheckout()">Xác nhận thanh toán</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="successAlert" class="alert alert-success d-none mt-3" role="alert">
+      🎉 Thanh toán tượng trưng thành công! Cảm ơn bạn đã mua hàng.
+    </div>
   </main>
 
 
   <footer id="footer" class="footer">
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">iLanding</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">iLanding</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">HomeShop</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
@@ -262,6 +251,7 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/user-edit.js"></script>
   <script src="assets/js/cart.js"></script>
+  <script src="assets/js/cart-pay.js"></script>
 
 
 </body>

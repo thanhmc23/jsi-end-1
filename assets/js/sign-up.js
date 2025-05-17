@@ -38,6 +38,7 @@ function reg(event) {
         password :  password,
         role: role,
         uid : user.uid,
+        isAdmin : false ,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(), 
       })
         .then(() => {

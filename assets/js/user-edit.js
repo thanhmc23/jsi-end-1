@@ -76,7 +76,6 @@ const product_list = [];
 function render_item() {
   let doc1 = document.getElementById("product");
   product_list.forEach((element) => {
-    let display_price = element.product_price.split(";");
     doc1.innerHTML += `<div id="${
       element.product_example_id
     }" class="col-2 card-between-witd" onclick="goToDetail(this.id)">
@@ -89,7 +88,7 @@ function render_item() {
       element.product_name
     )}</p>
     <p class="card-text product-price fs-6 mb-0 text-start fs-5"> ${
-      display_price[0]
+      element.product_price.toLocaleString("vi-VN")
     }<sup>₫</sup></p>
     <p class="card-text product-price fs-6 mb-0 text-start">⭐${
       element.product_example_rate
